@@ -8,6 +8,8 @@
 #include <setjmp.h>
 #include <math.h>
 #include <errno.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #define STACKSIZE 100000 // evaluation stack
 #define FRAMESIZE 10000
@@ -16453,11 +16455,18 @@ main(int argc, char *argv[])
 void
 run_stdin(void)
 {
-	static char inbuf[1000];
-	for (;;) {
-		printf("? ");
-		fgets(inbuf, sizeof inbuf, stdin);
+	//static char inbuf[1000];
+	//for (;;) {
+	//	printf("? ");
+	//	fgets(inbuf, sizeof inbuf, stdin);
+	//	run(inbuf);
+	//}
+	char *inbuf;
+	while(1) {
+		inbuf = readline(">");
 		run(inbuf);
+		add_history(inbuf);
+		free(inbuf);
 	}
 }
 
