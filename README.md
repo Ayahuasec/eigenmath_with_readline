@@ -1,3 +1,16 @@
+# A modified eigenmath with readline
+For Debian/Ubuntu users, the dependency of libreadline-dev is needed:
+```
+sudo apt install libreadline-dev
+```
+
+Compile the code:
+```
+gcc -O3 -o eigenmath eigenmath.c -lm -lreadline
+```
+
+# Original README.md:
+
 [Eigenmath Home Page](https://georgeweigt.github.io)
 
 #
